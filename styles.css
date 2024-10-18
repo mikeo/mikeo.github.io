@@ -21,11 +21,12 @@ header {
 
 /* Footer styling */
 footer {
-    color: black;
+    background-color: #333;
+    color: white;
     text-align: center;
     padding: 10px;
-    width: 100%;
-    bottom: 0;
+    width: 100%;      /* Full width */
+    bottom: 0;        /* Positioned at the bottom */
 }
 
 /* Gallery layout */
@@ -40,12 +41,13 @@ footer {
 .gallery-item {
     margin: 10px;
     flex-basis: calc(33.33% - 20px); /* 3 items per row, adjusting for margin */
-    box-sizing: border-box; /* Ensure padding/margins are included in the width calculation */
+    box-sizing: border-box;
+    text-align: center; /* Ensure the content (link) inside is centered */
 }
 
 /* Ensure that images inside the gallery are responsive and maintain aspect ratio */
 .gallery-item img {
-    width: 100%; /* Make the image take up the full width of the container */
+    width: 100%; /* Full width of the container */
     height: auto; /* Maintain aspect ratio */
     cursor: pointer;
     transition: transform 0.3s;
@@ -56,17 +58,24 @@ footer {
     transform: scale(1.05);  /* Slight zoom on hover */
 }
 
-/* Link styling in the gallery */
-a {
+/* Style the source link (darker and monotone) */
+.gallery-item a {
     display: block;
-    margin-top: 5px;
-    color: #007bff;
-    text-decoration: none;
+    width: 100%; /* Make the link the full width of the gallery item */
+    background-color: #555; /* Darker background for the button */
+    color: white; /* White text */
+    text-align: center; /* Center the text horizontally */
+    padding: 10px 0; /* Padding for the button */
+    text-decoration: none; /* Remove underline */
+    margin-top: 5px; /* Add space between the image and the button */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
 }
 
-/* Hover effect for links */
-a:hover {
-    text-decoration: underline;
+/* Hover effect for the source button */
+.gallery-item a:hover {
+    background-color: #333; /* Even darker on hover */
+    text-decoration: underline; /* Underline on hover */
 }
 
 /* Modal (Photo Preview Feature) */
@@ -90,7 +99,7 @@ a:hover {
     max-width: 80%;   /* Limit the image width to 80% of the viewport */
     max-height: 80%;  /* Limit the image height to 80% of the viewport */
     cursor: grab;     /* Grab cursor indicates pannable content */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease;  /* Smooth transition for zooming/panning */
 }
 
 /* When the image is being dragged */
