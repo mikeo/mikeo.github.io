@@ -54,12 +54,8 @@ modal.addEventListener('wheel', function (e) {
     const newZoom = Math.min(Math.max(1, currentZoom + delta), 5); // Min zoom is 1, max is 5
     const zoomRatio = newZoom / currentZoom;
 
-    // Calculate the new translation to keep the image stable under the mouse
-    translateX = (translateX - offsetX) * zoomRatio + offsetX;
-    translateY = (translateY - offsetY) * zoomRatio + offsetY;
-
     currentZoom = newZoom;
-    modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentZoom})`;
+    modalImg.style.transform = `scale(${currentZoom})`;
 });
 
 // Start panning (dragging) when mouse is pressed down
