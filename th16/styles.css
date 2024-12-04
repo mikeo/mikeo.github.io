@@ -99,6 +99,7 @@ footer {
     max-width: 80%;   /* Limit the image width to 80% of the viewport */
     max-height: 80%;  /* Limit the image height to 80% of the viewport */
     cursor: grab;     /* Grab cursor indicates pannable content */
+    transition: transform 0.3s ease;  /* Smooth transition for zooming/panning */
 }
 
 /* When the image is being dragged */
@@ -112,11 +113,9 @@ footer {
     top: 20px;
     right: 35px;
     color: white;
-    font-size: 70px;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-	z-index: 50;
-
 }
 
 /* Close button hover effect */
