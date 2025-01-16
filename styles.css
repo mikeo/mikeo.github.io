@@ -1,0 +1,210 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hamburger Menu Styling */
+.hamburger-menu {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hamburger-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Adjust gap for larger bars */
+    width: 40px; /* Larger width for bigger bars */
+    height: 40px; /* Match vertical size with text */
+    justify-content: center;
+}
+
+.hamburger-icon span {
+    background: white;
+    height: 6px; /* Increase thickness */
+    width: 100%;
+    border-radius: 3px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    display: none;
+    background: #333;
+    color: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 60px; /* Adjust position based on larger icon */
+    left: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    padding: 15px 20px; /* Larger padding for larger menu items */
+    text-align: left;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em; /* Slightly larger text for readability */
+}
+
+.dropdown-menu li:hover {
+    background: #555;
+}
+
+/* Centering Header Elements */
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px; /* Ensure enough height for centering */
+    background-color: #333;
+    color: white;
+    padding: 0 20px;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header styling */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;      /* Full width */
+    bottom: 0;        /* Positioned at the bottom */
+}
+
+/* Gallery layout */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* Gallery item styling */
+.gallery-item {
+    margin: 10px;
+    flex-basis: calc(33.33% - 20px); /* 3 items per row, adjusting for margin */
+    box-sizing: border-box;
+    text-align: center; /* Ensure the content (link) inside is centered */
+}
+
+/* Ensure that images inside the gallery are responsive and maintain aspect ratio */
+.gallery-item img {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+/* Image hover effect in the gallery */
+.gallery-item img:hover {
+    transform: scale(1.05);  /* Slight zoom on hover */
+}
+
+/* Style the source link (darker and monotone) */
+.gallery-item a {
+    display: block;
+    width: 100%; /* Make the link the full width of the gallery item */
+    background-color: #555; /* Darker background for the button */
+    color: white; /* White text */
+    text-align: center; /* Center the text horizontally */
+    padding: 10px 0; /* Padding for the button */
+    text-decoration: none; /* Remove underline */
+    margin-top: 5px; /* Add space between the image and the button */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the source button */
+.gallery-item a:hover {
+    background-color: #333; /* Even darker on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Modal (Photo Preview Feature) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);  /* Dark background */
+    overflow: hidden;  /* Prevent scrolling the page while panning */
+}
+
+/* Modal image styling */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;   /* Limit the image width to 80% of the viewport */
+    max-height: 80%;  /* Limit the image height to 80% of the viewport */
+    cursor: grab;     /* Grab cursor indicates pannable content */
+}
+
+/* When the image is being dragged */
+.modal-content:active {
+    cursor: grabbing;
+}
+
+/* Close button styling */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    cursor: pointer;
+	z-index: 50;
+
+}
+
+/* Close button hover effect */
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive design for tablets and smaller screens */
+@media (max-width: 768px) {
+    .gallery-item {
+        flex-basis: calc(50% - 20px); /* 2 items per row on tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        flex-basis: calc(100% - 20px); /* 1 item per row on mobile */
+    }
+}
