@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Game Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Auto-scrolling top bar */
+    #top-bar {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    #scrolling-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-text 15s linear infinite;
+    }
+
+    @keyframes scroll-text {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Main game area */
+    #game-area {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 60px);
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: green;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Auto-scrolling top bar -->
+  <div id="top-bar">
+    <div id="scrolling-text">
+      🚨 By Deepseek!!!!!!!! 🚨
+    </div>
+  </div>
+
+  <!-- Main game area -->
+  <div id="game-area"></div>
+
+  <!-- Footer -->
+  <footer>
+    zoom in or out to change difficulty
+  </footer>
+
+  <script>
+    // Game logic
+    const gameArea = document.getElementById('game-area');
+
+    function createCircle() {
+      const circle = document.createElement('div');
+      circle.classList.add('circle');
+
+      // Random position within the game area
+      const x = Math.random() * (gameArea.offsetWidth - 50);
+      const y = Math.random() * (gameArea.offsetHeight - 50);
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+
+      // Teleport circle on click
+      circle.addEventListener('click', () => {
+        const newX = Math.random() * (gameArea.offsetWidth - 50);
+        const newY = Math.random() * (gameArea.offsetHeight - 50);
+        circle.style.left = `${newX}px`;
+        circle.style.top = `${newY}px`;
+      });
+
+      gameArea.appendChild(circle);
+    }
+	createCircle();
+
+    // Create circles at regular intervals
+    //setInterval(createCircle, 1000);
+  </script>
+</body>
+</html>
