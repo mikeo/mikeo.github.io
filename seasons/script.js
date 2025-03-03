@@ -59,7 +59,7 @@ function generateSeasons() {
     const mondays = getNextMondays(50); // Get the next 50 Mondays
     const lastMondays = filterLastMondays(mondays); // Filter to keep only the last Monday of each month
 
-    for (let i = 0; i < lastMondays.length - 1; i++) {
+    for (let i = 0; i < lastMondays.length - 2; i++) { 
         const startDate = lastMondays[i];
         const endDate = lastMondays[i + 1];
         const durationInWeeks = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24 * 7));
@@ -70,6 +70,7 @@ function generateSeasons() {
             activeSeasonIndex = i;
             seasonName = "⭐" + seasonName + "⭐"
             durationText = durationText + " (current)"
+            currentSeasonIndex = i;
         }
 
         seasons.push({
