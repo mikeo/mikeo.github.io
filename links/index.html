@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>link helper</title>
+</head>
+<body>
+  <h1>link helper</h1>
+  <div class="container">
+    <div class="input-group">
+      <label for="clanTag">CLAN</label>
+      <div class="input-wrapper">
+        <input type="text" id="clanTag" placeholder="Enter Clan Tag" />
+        <button class="copy-btn" onclick="copyURL('clan')">Copy</button>
+        <button class="go-btn" onclick="goToURL('clan')">Go</button>
+      </div>
+    </div>
+	</br>
+    <div class="input-group">
+      <label for="playerTag">PLAYER</label>
+      <div class="input-wrapper">
+        <input type="text" id="playerTag" placeholder="Enter Player Tag" />
+        <button class="copy-btn" onclick="copyURL('player')">Copy</button>
+        <button class="go-btn" onclick="goToURL('player')">Go</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BASE_URLS = {
+      clan: "https://link.clashofclans.com/en?action=OpenClanProfile&tag=",
+      player: "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag="
+    };
+
+    function getURL(type) {
+      const tag = document.getElementById(type + "Tag").value.trim().replace(/^#/, "");
+      return BASE_URLS[type] + encodeURIComponent(tag);
+    }
+
+    function copyURL(type) {
+      const url = getURL(type);
+      navigator.clipboard.writeText(url).then(() => {
+        alert(type.toUpperCase() + " URL copied to clipboard!");
+      });
+    }
+
+    function goToURL(type) {
+      const url = getURL(type);
+      window.open(url, '_blank');
+    }
+
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      const player = params.get('p') || params.get('player');
+      const clan = params.get('c') || params.get('clan');
+      return { player, clan };
+    }
+
+    function autoRedirectIfQuery() {
+      const { player, clan } = getQueryParams();
+      if (player) {
+        const url = BASE_URLS.player + encodeURIComponent(player.replace(/^#/, ""));
+        window.location.href = url;
+      } else if (clan) {
+        const url = BASE_URLS.clan + encodeURIComponent(clan.replace(/^#/, ""));
+        window.location.href = url;
+      }
+    }
+
+    window.onload = autoRedirectIfQuery;
+  </script>
+</body>
+</html>
